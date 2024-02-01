@@ -15,13 +15,11 @@ public class Main {
 
         if (strings.length == 1 || strings.length == 2) {
 
-            System.out.println("Cтрока не является математической операцией");
-            System.exit(1);
+            throw new IllegalArgumentException("Cтрока не является математической операцией");
 
         } else if (strings.length > 3) {
 
-            System.out.println("Формат математической операции не удовлетворяет заданию");
-            System.exit(1);
+            throw new IllegalArgumentException("Формат математической операции не удовлетворяет заданию");
         }
 
         String ch1 = String.format(strings[0]);
@@ -44,7 +42,7 @@ public class Main {
                 || ch2.equals("8") || ch2.equals("9") || ch2.equals("10")) && (ch1.equals("I") || ch1.equals("II")
                 || ch1.equals("III") || ch1.equals("IV") || ch1.equals("V") || ch1.equals("VI") || ch1.equals("VII")
                 || ch1.equals("VIII") || ch1.equals("IX") || ch1.equals("X"))) {
-            System.out.println("Введены разные системы счисления");
+            throw new IllegalArgumentException("Введены разные системы счисления");
         } else if ((!ch1.equals("1") && !ch1.equals("2") && !ch1.equals("3") && !ch1.equals("4") && !ch1.equals("5") && !ch1.equals("6")
                 && !ch1.equals("7") && !ch1.equals("8") && !ch1.equals("9") && !ch1.equals("10")) && (!ch1.equals("I") && !ch1.equals("II")
                 && !ch1.equals("III") && !ch1.equals("IV") && !ch1.equals("V") && !ch1.equals("VI") && !ch1.equals("VII")
@@ -53,7 +51,7 @@ public class Main {
                 && !ch2.equals("VIII") && !ch2.equals("IX") && !ch2.equals("X")) && (!ch2.equals("1") && !ch2.equals("2")
                 && !ch2.equals("3") && !ch2.equals("4") && !ch2.equals("5") && !ch2.equals("6") && !ch2.equals("7")
                 && !ch2.equals("8") && !ch2.equals("9") && !ch2.equals("10"))) {
-            System.out.println("Введено неверное число (меньше 1 || больше 10 || меньше I || больше X)");
+            throw new IllegalArgumentException("Введено неверное число (меньше 1 || больше 10 || меньше I || больше X)");
         } else {
 
             switch (ch1) {
@@ -225,7 +223,7 @@ public class Main {
                     break;
 
                 default:
-                    System.out.println("Ошибка");
+                    throw new IllegalArgumentException("Ошибка");
 
             }
             if (x != 0) {
@@ -252,7 +250,7 @@ public class Main {
                         break;
 
                     default:
-                        System.out.println("Знак неверный");
+                        throw new IllegalArgumentException("Знак неверный");
                 }
             } else {
                 switch (st) {
@@ -274,38 +272,29 @@ public class Main {
                         break;
 
                     default:
-                        System.out.println("Знак неверный");
+                        throw new IllegalArgumentException("Знак неверный");
                 }
 
                 switch (otv) {
 
                     case -9:
-                        System.out.println("Римское число не может быть отрицательным");
-                        break;
+                        throw new IllegalArgumentException("Римское число не может быть отрицательным");
                     case -8:
-                        System.out.println("Римское число не может быть отрицательным");
-                        break;
+                        throw new IllegalArgumentException("Римское число не может быть отрицательным");
                     case -7:
-                        System.out.println("Римское число не может быть отрицательным");
-                        break;
+                        throw new IllegalArgumentException("Римское число не может быть отрицательным");
                     case -6:
-                        System.out.println("Римское число не может быть отрицательным");
-                        break;
+                        throw new IllegalArgumentException("Римское число не может быть отрицательным");
                     case -5:
-                        System.out.println("Римское число не может быть отрицательным");
-                        break;
+                        throw new IllegalArgumentException("Римское число не может быть отрицательным");
                     case -4:
-                        System.out.println("Римское число не может быть отрицательным");
-                        break;
+                        throw new IllegalArgumentException("Римское число не может быть отрицательным");
                     case -3:
-                        System.out.println("Римское число не может быть отрицательным");
-                        break;
+                        throw new IllegalArgumentException("Римское число не может быть отрицательным");
                     case -2:
-                        System.out.println("Римское число не может быть отрицательным");
-                        break;
+                        throw new IllegalArgumentException("Римское число не может быть отрицательным");
                     case -1:
-                        System.out.println("Римское число не может быть отрицательным");
-                        break;
+                        throw new IllegalArgumentException("Римское число не может быть отрицательным");
                     case 0:
                         System.out.println("nulla");
                         break;
