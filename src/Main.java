@@ -3,450 +3,135 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Калькулятор.");
-        System.out.println("");
-        /*String ch1 = sc.next();
-        String st = sc.next();
-        String ch2 = sc.next();*/
 
         String line = sc.nextLine();
 
-        String[] strings = line.split(" ");  // splits the string wherever a space character is encountered, returns the result as a String[]
+        System.out.println(calc(line));
+    }
 
-        if (strings.length == 1 || strings.length == 2) {
+    public static String calc(String line) {
 
-            throw new IllegalArgumentException("Cтрока не является математической операцией");
+        int z = line.indexOf('+');
+        int h = line.indexOf('-');
+        int q = line.indexOf('*');
+        int u = line.indexOf('/');
+        String line1 = null;
 
-        } else if (strings.length > 3) {
+        int x; int y;
 
-            throw new IllegalArgumentException("Формат математической операции не удовлетворяет заданию");
-        }
+        if (z != -1) { //Проверяем +
+            String[] strings = line.split("\\+");
 
-        String ch1 = String.format(strings[0]);
-        String st = String.format(strings[1]);
-        String ch2 = String.format(strings[2]);
+            int l = strings[0].length();
+            int l2 = strings[1].length();
 
+            if (strings.length == 1 || strings[0].charAt(0) != '"' || strings[0].charAt(l - 2) != '"'
+                    || Character.isDigit(strings[0].charAt(0)) || Character.isDigit(strings[1].charAt(1))
+                    || strings[1].charAt(1) != '"' || strings[1].charAt(l2 - 1) != '"' || l > 13 || l2 > 13) {
 
+                throw new IllegalArgumentException();
 
-        int x = 0;
-        int y = 0;
-        int z = 0;
-        int h = 0;
-        int otv = 0;
-
-        if ((ch1.equals("1") || ch1.equals("2") || ch1.equals("3") || ch1.equals("4") || ch1.equals("5") || ch1.equals("6")
-                || ch1.equals("7") || ch1.equals("8") || ch1.equals("9") || ch1.equals("10")) && (ch2.equals("I") || ch2.equals("II")
-                || ch2.equals("III") || ch2.equals("IV") || ch2.equals("V") || ch2.equals("VI") || ch2.equals("VII")
-                || ch2.equals("VIII") || ch2.equals("IX") || ch2.equals("X")) || (ch2.equals("1") || ch2.equals("2")
-                || ch2.equals("3") || ch2.equals("4") || ch2.equals("5") || ch2.equals("6")|| ch2.equals("7")
-                || ch2.equals("8") || ch2.equals("9") || ch2.equals("10")) && (ch1.equals("I") || ch1.equals("II")
-                || ch1.equals("III") || ch1.equals("IV") || ch1.equals("V") || ch1.equals("VI") || ch1.equals("VII")
-                || ch1.equals("VIII") || ch1.equals("IX") || ch1.equals("X"))) {
-            throw new IllegalArgumentException("Введены разные системы счисления");
-        } else if ((!ch1.equals("1") && !ch1.equals("2") && !ch1.equals("3") && !ch1.equals("4") && !ch1.equals("5") && !ch1.equals("6")
-                && !ch1.equals("7") && !ch1.equals("8") && !ch1.equals("9") && !ch1.equals("10")) && (!ch1.equals("I") && !ch1.equals("II")
-                && !ch1.equals("III") && !ch1.equals("IV") && !ch1.equals("V") && !ch1.equals("VI") && !ch1.equals("VII")
-                && !ch1.equals("VIII") && !ch1.equals("IX") && !ch1.equals("X")) || (!ch2.equals("I") && !ch2.equals("II")
-                && !ch2.equals("III") && !ch2.equals("IV") && !ch2.equals("V") && !ch2.equals("VI") && !ch2.equals("VII")
-                && !ch2.equals("VIII") && !ch2.equals("IX") && !ch2.equals("X")) && (!ch2.equals("1") && !ch2.equals("2")
-                && !ch2.equals("3") && !ch2.equals("4") && !ch2.equals("5") && !ch2.equals("6") && !ch2.equals("7")
-                && !ch2.equals("8") && !ch2.equals("9") && !ch2.equals("10"))) {
-            throw new IllegalArgumentException("Введено неверное число (меньше 1 || больше 10 || меньше I || больше X)");
-        } else {
-
-            switch (ch1) {
-
-                case "1":
-                    x = 1;
-                    break;
-
-                case "2":
-                    x = 2;
-                    break;
-
-                case "3":
-                    x = 3;
-                    break;
-
-                case "4":
-                    x = 4;
-                    break;
-
-                case "5":
-                    x = 5;
-                    break;
-
-                case "6":
-                    x = 6;
-                    break;
-
-                case "7":
-                    x = 7;
-                    break;
-
-                case "8":
-                    x = 8;
-                    break;
-
-                case "9":
-                    x = 9;
-                    break;
-
-                case "10":
-                    x = 10;
-                    break;
-
-                case "I":
-                    z = 1;
-                    break;
-
-                case "II":
-                    z = 2;
-                    break;
-
-                case "III":
-                    z = 3;
-                    break;
-
-                case "IV":
-                    z = 4;
-                    break;
-
-                case "V":
-                    z = 5;
-                    break;
-
-                case "VI":
-                    z = 6;
-                    break;
-
-                case "VII":
-                    z = 7;
-                    break;
-
-                case "VIII":
-                    z = 8;
-                    break;
-
-                case "IX":
-                    z = 9;
-                    break;
-
-                case "X":
-                    z = 10;
-                    break;
-
-                default:
-
-            }
-
-            switch (ch2) {
-
-                case "1":
-                    y = 1;
-                    break;
-
-                case "2":
-                    y = 2;
-                    break;
-
-                case "3":
-                    y = 3;
-                    break;
-
-                case "4":
-                    y = 4;
-                    break;
-
-                case "5":
-                    y = 5;
-                    break;
-
-                case "6":
-                    y = 6;
-                    break;
-
-                case "7":
-                    y = 7;
-                    break;
-
-                case "8":
-                    y = 8;
-                    break;
-
-                case "9":
-                    y = 9;
-                    break;
-
-                case "10":
-                    y = 10;
-                    break;
-
-                case "I":
-                    h = 1;
-                    break;
-
-                case "II":
-                    h = 2;
-                    break;
-
-                case "III":
-                    h = 3;
-                    break;
-
-                case "IV":
-                    h = 4;
-                    break;
-
-                case "V":
-                    h = 5;
-                    break;
-
-                case "VI":
-                    h = 6;
-                    break;
-
-                case "VII":
-                    h = 7;
-                    break;
-
-                case "VIII":
-                    h = 8;
-                    break;
-
-                case "IX":
-                    h = 9;
-                    break;
-
-                case "X":
-                    h = 10;
-                    break;
-
-                default:
-                    throw new IllegalArgumentException("Ошибка");
-
-            }
-            if (x != 0) {
-                switch (st) {
-
-                    case "+":
-                        otv = x + y;
-                        System.out.println(otv);
-                        break;
-
-                    case "-":
-                        otv = x - y;
-                        System.out.println(otv);
-                        break;
-
-                    case "*":
-                        otv = x * y;
-                        System.out.println(otv);
-                        break;
-
-                    case "/":
-                        otv = x / y;
-                        System.out.println(otv);
-                        break;
-
-                    default:
-                        throw new IllegalArgumentException("Знак неверный");
-                }
             } else {
-                switch (st) {
-
-                    case "+":
-                        otv = z + h;
-                        break;
-
-                    case "-":
-                        otv = z - h;
-                        break;
-
-                    case "*":
-                        otv = z * h;
-                        break;
-
-                    case "/":
-                        otv = z / h;
-                        break;
-
-                    default:
-                        throw new IllegalArgumentException("Знак неверный");
-                }
-
-                switch (otv) {
-
-                    case -9:
-                        throw new IllegalArgumentException("Римское число не может быть отрицательным");
-                    case -8:
-                        throw new IllegalArgumentException("Римское число не может быть отрицательным");
-                    case -7:
-                        throw new IllegalArgumentException("Римское число не может быть отрицательным");
-                    case -6:
-                        throw new IllegalArgumentException("Римское число не может быть отрицательным");
-                    case -5:
-                        throw new IllegalArgumentException("Римское число не может быть отрицательным");
-                    case -4:
-                        throw new IllegalArgumentException("Римское число не может быть отрицательным");
-                    case -3:
-                        throw new IllegalArgumentException("Римское число не может быть отрицательным");
-                    case -2:
-                        throw new IllegalArgumentException("Римское число не может быть отрицательным");
-                    case -1:
-                        throw new IllegalArgumentException("Римское число не может быть отрицательным");
-                    case 0:
-                        System.out.println("nulla");
-                        break;
-                    case 1:
-                        System.out.println("I");
-                        break;
-                    case 2:
-                        System.out.println("II");
-                        break;
-                    case 3:
-                        System.out.println("III");
-                        break;
-                    case 4:
-                        System.out.println("IV");
-                        break;
-                    case 5:
-                        System.out.println("V");
-                        break;
-                    case 6:
-                        System.out.println("VI");
-                        break;
-                    case 7:
-                        System.out.println("VII");
-                        break;
-                    case 8:
-                        System.out.println("VIII");
-                        break;
-                    case 9:
-                        System.out.println("IX");
-                        break;
-                    case 10:
-                        System.out.println("X");
-                        break;
-                    case 11:
-                        System.out.println("XI");
-                        break;
-                    case 12:
-                        System.out.println("XII");
-                        break;
-                    case 13:
-                        System.out.println("XIII");
-                        break;
-                    case 14:
-                        System.out.println("XIV");
-                        break;
-                    case 15:
-                        System.out.println("XV");
-                        break;
-                    case 16:
-                        System.out.println("XVI");
-                        break;
-                    case 17:
-                        System.out.println("XVII");
-                        break;
-                    case 18:
-                        System.out.println("XVIII");
-                        break;
-                    case 19:
-                        System.out.println("XIX");
-                        break;
-                    case 20:
-                        System.out.println("XX");
-                        break;
-                    case 21:
-                        System.out.println("XXI");
-                        break;
-                    case 24:
-                        System.out.println("XXIV");
-                        break;
-                    case 25:
-                        System.out.println("XXV");
-                        break;
-                    case 27:
-                        System.out.println("XXVII");
-                        break;
-                    case 28:
-                        System.out.println("XXVIII");
-                        break;
-                    case 30:
-                        System.out.println("XXX");
-                        break;
-                    case 32:
-                        System.out.println("XXXII");
-                        break;
-                    case 35:
-                        System.out.println("XXXV");
-                        break;
-                    case 36:
-                        System.out.println("XXXVI");
-                        break;
-                    case 40:
-                        System.out.println("XL");
-                        break;
-                    case 42:
-                        System.out.println("XLII");
-                        break;
-                    case 45:
-                        System.out.println("XLV");
-                        break;
-                    case 48:
-                        System.out.println("XLVIII");
-                        break;
-                    case 49:
-                        System.out.println("XLIX");
-                        break;
-                    case 50:
-                        System.out.println("L");
-                        break;
-                    case 54:
-                        System.out.println("LIV");
-                        break;
-                    case 56:
-                        System.out.println("LVI");
-                        break;
-                    case 60:
-                        System.out.println("LX");
-                        break;
-                    case 63:
-                        System.out.println("LXIII");
-                        break;
-                    case 64:
-                        System.out.println("LXIV");
-                        break;
-                    case 70:
-                        System.out.println("LXX");
-                        break;
-                    case 72:
-                        System.out.println("LXXII");
-                        break;
-                    case 80:
-                        System.out.println("LXXX");
-                        break;
-                    case 81:
-                        System.out.println("LXXXI");
-                        break;
-                    case 90:
-                        System.out.println("XC");
-                        break;
-                    case 100:
-                        System.out.println("C");
-                        break;
-
-                    default:
-                }
+                line1 = strings[0].substring(1, l-2) + strings[1].substring(2, l2 - 1);
             }
-        }
-        //else System.out.println("всё ок");
 
-        /*if (st == str2) {
-            otv = ch1 * ch2;
-            System.out.println(otv);
-        } else {
-        System.out.println("error");}*/
+        } else if (h != -1) { //Проверяем -
+
+            String[] strings = line.split(" - ");
+
+            int l = strings[0].length();
+            int l2 = strings[1].length();
+
+            if (strings.length == 1 || strings[0].charAt(0) != '"' || strings[0].charAt(l - 1) != '"'
+                    || Character.isDigit(strings[0].charAt(0)) || Character.isDigit(strings[1].charAt(1))
+                    || strings[1].charAt(0) != '"' || strings[1].charAt(l2 - 1) != '"' || l > 12 || l2 > 12) {
+
+                throw new IllegalArgumentException();
+
+            }
+
+            String ch1 = strings[0].substring(1, l-1);
+            String ch2 = strings[1].substring(1, l2-1);
+
+            if (ch1.indexOf(ch2) == -1) {
+
+                line1 = ch1;
+
+            } else {
+                
+                x = ch1.indexOf(ch2);
+                y = x + l2 - 2;
+                line1 = ch1.substring(0, x) + ch1.substring(y);
+                
+            }
+        } else if (q != -1) { //Проверяем *
+
+            String[] strings = line.split(" * ");
+
+            int l = strings[0].length();
+            int l2 = strings[1].length();
+
+            if (Character.isDigit(strings[0].charAt(0)) || !Character.isDigit(strings[2].charAt(0))) {
+                throw new IllegalArgumentException();
+            }
+
+            String ch1 = strings[0].substring(1, l - 1);
+            int ch2 = Integer.parseInt(strings[2]);
+
+            if (strings.length == 1 || strings[0].charAt(0) != '"' || strings[0].charAt(l - 1) != '"'
+                    || strings[2].charAt(0) == '"' || strings[2].charAt(l2 - 1) == '"' || ch2 < 1 || ch2 > 10 || l > 12|| ch2 % 1 != 0) {
+
+                throw new IllegalArgumentException();
+
+            } else
+
+                for(int i = 1; i <= ch2; i++) {
+                    line1 += ch1;
+                }
+
+            line1 = line1.substring(4);
+
+        } else if (u != -1) { //Проверяем /
+
+            String[] strings = line.split(" / ");
+
+            int l = strings[0].length();
+            int l2 = strings[1].length();
+
+            if (Character.isDigit(strings[0].charAt(0)) || !Character.isDigit(strings[1].charAt(0))) {
+                throw new IllegalArgumentException();
+            }
+
+            String ch1 = strings[0].substring(1, l - 1);
+            int ch2 = Integer.parseInt(strings[1]);
+
+            if (strings.length == 1 || strings[0].charAt(0) != '"' || strings[0].charAt(l - 1) != '"' || strings[1].charAt(0) == '"'
+                    || strings[1].charAt(l2 - 1) == '"' || ch2 < 1 || ch2 > 10 || l > 12 || ch2 % 1 != 0 || l - 2 < ch2) {
+
+                throw new IllegalArgumentException();
+
+            } else
+                
+                x = l / ch2;
+            
+            if (ch2 == 1) {
+                
+                line1 = ch1;
+                
+            } else
+                
+            line1 = ch1.substring(0, x - 1);
+            
+        } else
+            
+            throw new IllegalArgumentException();
+
+        if (line1.length() > 40) {
+            
+            line1 = '"' + line1.substring(0, 40) + "..." + '"';
+
+        } else line1 = '"' + line1 + '"';
+        
+        return line1;
     }
 }
